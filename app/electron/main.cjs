@@ -2,7 +2,7 @@ const { app, BrowserWindow, session, shell } = require('electron')
 const fs = require('fs')
 const path = require('path')
 
-const DEFAULT_BOUNDS = { width: 500, height: 900 }
+const DEFAULT_BOUNDS = { width: 1080, height: 820 }
 const ALLOWED_EXTERNAL_PROTOCOLS = new Set(['http:', 'https:', 'xhsdiscover:', 'pinterest:'])
 
 function statePath() {
@@ -13,7 +13,7 @@ function readWindowState() {
   try {
     const value = JSON.parse(fs.readFileSync(statePath(), 'utf8'))
     return {
-      width: Math.max(380, Number(value.width) || DEFAULT_BOUNDS.width),
+      width: Math.max(760, Number(value.width) || DEFAULT_BOUNDS.width),
       height: Math.max(640, Number(value.height) || DEFAULT_BOUNDS.height),
       x: Number.isFinite(value.x) ? value.x : undefined,
       y: Number.isFinite(value.y) ? value.y : undefined,
@@ -49,7 +49,7 @@ function createWindow() {
   const state = readWindowState()
   const win = new BrowserWindow({
     ...state,
-    minWidth: 380,
+    minWidth: 760,
     minHeight: 640,
     show: false,
     title: '搭了么',
