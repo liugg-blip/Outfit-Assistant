@@ -1,53 +1,73 @@
-# 搭了么 Windows 本地版
+# DAILEMA Outfit Assistant for Windows
 
-项目已取消原生 iOS 和 App Store 发布路线，后续只维护 Windows 桌面版本。
+DAILEMA is a local Windows desktop application for outfit color coordination, focus-item styling, body-type comparison, and two-dimensional garment visualization.
 
-## 当前工程
+The original native iOS and App Store release plan has been discontinued. This repository now maintains the Windows desktop edition only.
 
-- `app/dist/assets/app.js`：从已验证版本恢复的前端业务包，包含配色规则、人体模型和界面。
-- `app/dist/desktop.js`：桌面增强层，保存性别与重点单品偏好。
-- `app/dist/localization.js`：英文默认界面与中英文切换设置。
-- `app/dist/wardrobe.js`：模型库、服装库、用户图片导入与本地叠穿工作室。
-- `app/dist/assets/atelier.css`：造型工作台视觉主题。
-- `design/silhouettes-v2.json`：男女人体模型与点击热区的可维护数据。
-- `app/electron/main.cjs`：Electron 主进程，负责窗口、安全边界和外部链接。
-- `scripts/check.cjs`：离线结构回归检查。
-- `scripts/build.cjs`：生成可直接运行的 Windows 文件夹版。
+> 中文用户：应用内可切换简体中文。发布目录中另有 `使用教程.txt`。
 
-原始 TypeScript 源码未保留，当前前端业务包来自 `app.asar`。后续对核心规则进行大改前，应逐步把业务包拆回可读模块。
+## Features
 
-## 构建
+- Build coordinated palettes for tops, bottoms, socks, and shoes.
+- Choose one focus item and keep the remaining garments visually supportive.
+- Lock selected items while generating alternative outfit suggestions.
+- Browse built-in body examples ranging from XXS to 4XL.
+- Import a front-facing full-body model photo.
+- Browse or import tops, bottoms, socks, and shoes.
+- Preview garments as local two-dimensional overlays.
+- Switch between English and Simplified Chinese.
+- Open Xiaohongshu and Pinterest searches for external styling inspiration.
 
-首次准备运行时：
+## Privacy
+
+Color analysis runs locally. Imported model and garment images are stored in the application's local IndexedDB data and are not uploaded automatically.
+
+External inspiration buttons open the system browser. The application does not embed or scrape content from Xiaohongshu or Pinterest.
+
+## Preview Limitations
+
+The fitting studio is intended for comparing body proportions, garment silhouettes, and colors. It does not provide exact sizing or physically accurate simulation of fabric folds, drape, stretch, fit, or body occlusion.
+
+Always consult the garment brand's size chart and try on the actual garment before purchasing.
+
+## Project Structure
+
+- `app/dist/assets/app.js`: recovered frontend business bundle containing the color rules and original interface.
+- `app/dist/desktop.js`: desktop preference layer for gender and focus-item settings.
+- `app/dist/localization.js`: English-default interface and language settings.
+- `app/dist/wardrobe.js`: model library, wardrobe library, local imports, and fitting studio.
+- `app/dist/assets/atelier.css`: main fashion workspace theme.
+- `app/dist/assets/wardrobe.css`: model and wardrobe studio styling.
+- `design/silhouettes-v2.json`: maintainable mannequin paths and interaction regions.
+- `app/electron/main.cjs`: Electron window, security boundaries, and external-link handling.
+- `scripts/check.cjs`: offline structural regression checks.
+- `scripts/build.cjs`: Windows folder-build script.
+
+The original TypeScript source was not preserved. The current frontend bundle was recovered from a verified `app.asar` build. Major changes to the core color engine should gradually move that logic back into readable source modules.
+
+## Build
+
+Prepare the local Electron runtime once:
 
 ```powershell
 node scripts/seed-runtime.cjs
 ```
 
-调整 `design/silhouettes-v2.json` 后，将模型同步到前端业务包：
+After changing `design/silhouettes-v2.json`, apply the mannequin data:
 
 ```powershell
 node scripts/apply-silhouettes.cjs
 ```
 
-检查并构建（不依赖 npm）：
+Run the checks and create the Windows folder build:
 
 ```powershell
 node scripts/check.cjs
 node scripts/build.cjs
 ```
 
-产物位于 `release/搭了么/搭了么.exe`。必须保留整个文件夹，不能只移动 EXE。
+The generated application folder is placed under `release/`. Keep the complete folder together; the executable cannot run correctly when copied by itself.
 
-## 使用说明
+## Repository Scope
 
-- 首次启动默认显示英文界面。
-- 点击顶部齿轮按钮，可在 English 与简体中文之间切换。
-- 灵感搜索提供小红书与 Pinterest，外部内容会在系统浏览器中打开。
-- 点击顶部 `FIT LAB / 试衣间` 可进入模型与服装工作室。
-- 内置体型覆盖 XXS–4XL；用户导入的模特和服装图片保存在本机 IndexedDB，不会上传。
-- 试衣工作室提供视觉叠穿参考，不模拟真实尺码、面料垂坠或物理贴合。
-
-## 公开仓库范围
-
-GitHub 仓库只发布可维护源码与构建脚本。`runtime/` 和 `release/` 已被忽略，不包含 Electron 运行时或 EXE；在本机准备运行时后仍可按上述步骤构建完整桌面程序。
+This public repository contains maintainable application files and build scripts only. Electron runtime files, generated releases, imported user images, logs, and local application data are excluded from Git.
