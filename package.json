@@ -1,0 +1,10 @@
+{
+  "name": "dailema-desktop",
+  "version": "0.2.0",
+  "private": true,
+  "description": "搭了么 - Windows 本地穿搭配色工具",
+  "scripts": {
+    "check": "node scripts/check.cjs",
+    "build": "node scripts/build.cjs"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "dailema",
+  "version": "0.2.0",
+  "private": true,
+  "description": "搭了么 - Windows 本地穿搭配色工具",
+  "main": "electron/main.cjs"
+}

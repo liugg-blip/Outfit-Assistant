@@ -1,0 +1,566 @@
+/*
+ * Atelier desk theme
+ * The interface stays neutral so the outfit colors remain the visual subject.
+ */
+:root {
+  --ink: #171918;
+  --ink-2: #3f4442;
+  --ink-3: #727975;
+  --ink-4: #9aa19d;
+  --paper: #f5f6f3;
+  --paper-2: #e7e9e5;
+  --card: #fcfcfa;
+  --line: #d7dad5;
+  --line-strong: #afb5b0;
+  --accent: #b23a2b;
+  --accent-hover: #922f24;
+  --accent-soft: #d59b91;
+  --tint-good: #e5ecef;
+  --tint-good-ink: #294c5a;
+  --tint-warn: #f2ead8;
+  --tint-warn-ink: #675022;
+  --tint-bad: #f2dfdc;
+  --tint-bad-ink: #7d2f27;
+  --body: #c7cbc6;
+  --body-line: #8f9691;
+  --empty: #e1e4df;
+  --r-xs: 3px;
+  --r-sm: 4px;
+  --r: 6px;
+  --r-lg: 6px;
+  --r-xl: 8px;
+  --r-pill: 6px;
+  --shadow-sheet: 0 -16px 48px rgba(23, 25, 24, 0.18);
+  --shadow-card: 0 8px 24px rgba(23, 25, 24, 0.06);
+  --shadow-chip: 0 4px 12px rgba(23, 25, 24, 0.12);
+  font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+
+* {
+  letter-spacing: 0 !important;
+}
+
+body {
+  background: #d9dcd8;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #1f5f91;
+  outline-offset: 2px;
+}
+
+.app {
+  background: #d9dcd8;
+}
+
+.phone {
+  max-width: 440px;
+  background: var(--paper);
+  border-right: 1px solid #c5c9c4;
+  border-left: 1px solid #c5c9c4;
+  box-shadow: 0 22px 70px rgba(23, 25, 24, 0.12);
+}
+
+.topbar {
+  position: relative;
+  min-height: 88px;
+  align-items: flex-start;
+  padding: 22px 24px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+
+.settings-button {
+  position: absolute;
+  top: 24px;
+  right: 76px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--ink-2);
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.settings-button:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+  background: var(--paper-2);
+}
+
+.language-settings-root {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.settings-scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: rgba(23, 25, 24, 0.58);
+  cursor: default;
+}
+
+.language-settings {
+  position: relative;
+  width: min(340px, 100%);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: var(--shadow-sheet);
+  overflow: hidden;
+}
+
+.language-settings__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.language-settings__head span,
+.language-settings__body p {
+  color: var(--ink-3);
+  font: 600 10px/1.2 "Bahnschrift", sans-serif;
+  text-transform: uppercase;
+}
+
+.language-settings__head h2 {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font: 600 22px/1.2 "Songti SC", "STSong", serif;
+}
+
+.settings-close {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink-2);
+  background: var(--paper);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.language-settings__body {
+  padding: 20px;
+}
+
+.language-settings__body p {
+  margin: 0 0 10px;
+}
+
+.language-options {
+  display: grid;
+  gap: 8px;
+}
+
+.language-options button {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.language-options button:hover {
+  border-color: var(--line-strong);
+}
+
+.language-options button.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.language-options small {
+  color: var(--ink-3);
+}
+
+.language-options button.is-active small {
+  color: #d7dad5;
+}
+
+.brand {
+  margin: 0 0 3px;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.topbar .t-caption {
+  font-family: "Bahnschrift", "Microsoft YaHei UI", sans-serif;
+  color: var(--ink-3);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.seg {
+  padding: 2px;
+  border-radius: 5px;
+  background: var(--paper-2);
+  border-color: #cfd3ce;
+}
+
+.seg__item {
+  width: 42px;
+  height: 32px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.seg__item--on {
+  background: var(--ink);
+  box-shadow: 0 2px 7px rgba(23, 25, 24, 0.2);
+}
+
+.stage {
+  position: relative;
+  gap: 14px;
+  padding: 18px 22px 4px 24px;
+  overflow: hidden;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(rgba(91, 101, 95, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 101, 95, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.stage::before {
+  content: "FIT / COLOR STUDY";
+  position: absolute;
+  top: 12px;
+  left: 24px;
+  z-index: 2;
+  color: #858d88;
+  font: 500 9px/1 "Bahnschrift", sans-serif;
+  pointer-events: none;
+}
+
+.stage::after {
+  content: "";
+  position: absolute;
+  right: 104px;
+  bottom: 20px;
+  left: 30px;
+  height: 1px;
+  background: #b9beb9;
+  pointer-events: none;
+}
+
+.stage__figure {
+  z-index: 1;
+}
+
+.mannequin {
+  filter: drop-shadow(0 12px 14px rgba(23, 25, 24, 0.08));
+}
+
+.ground {
+  opacity: 0.12;
+}
+
+.body circle,
+.body path {
+  fill: #bfc4bf;
+}
+
+.region {
+  stroke-width: 0.95;
+  stroke-opacity: 0.72;
+}
+
+.region--empty {
+  fill: #eef0ed !important;
+  stroke: #9da49f;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.region--focus {
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-dasharray: 4 2;
+}
+
+.rail {
+  width: 82px;
+  gap: 12px;
+  padding: 12px 0;
+  border-left: 1px solid rgba(143, 150, 145, 0.35);
+}
+
+.rail__item {
+  grid-template-columns: 42px 1fr;
+}
+
+.rail__chip {
+  width: 42px;
+  height: 42px;
+  margin-left: 12px;
+  border-radius: 4px;
+  border-color: rgba(23, 25, 24, 0.18);
+  box-shadow: 0 3px 10px rgba(23, 25, 24, 0.1);
+}
+
+.rail__chip--empty {
+  background: rgba(252, 252, 250, 0.82);
+  border: 1px dashed #8f9691;
+}
+
+.rail__chip--on {
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink);
+}
+
+.rail__lock {
+  top: -7px;
+  left: 44px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.rail__label,
+.rail__name {
+  padding-left: 17px;
+}
+
+.rail__label {
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rail__name {
+  color: var(--ink-3);
+  font-size: 9px;
+}
+
+.focusbar {
+  gap: 12px;
+  padding: 12px 24px 10px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.focusbar__label {
+  color: var(--ink);
+  font: 600 10px/1 "Bahnschrift", "Microsoft YaHei UI", sans-serif;
+}
+
+.focusbar__pills {
+  gap: 2px;
+  padding: 2px;
+  border-radius: 5px;
+  background: var(--paper-2);
+}
+
+.fpill {
+  height: 30px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.fpill--on {
+  background: var(--accent);
+  box-shadow: 0 2px 7px rgba(178, 58, 43, 0.24);
+}
+
+.readout {
+  min-height: 96px;
+  padding: 10px 24px 0;
+  background: var(--card);
+}
+
+.hint {
+  color: var(--ink-2);
+  font-size: 12px;
+}
+
+.hint--focus {
+  padding: 11px 13px;
+  border: 1px solid #c9d7dc;
+  border-left: 3px solid #497789;
+  border-radius: 3px;
+  background: var(--tint-good);
+  text-align: left;
+}
+
+.verdict__num,
+.score {
+  font-family: "Bahnschrift", "Arial Narrow", sans-serif;
+  font-weight: 300;
+}
+
+.dock {
+  padding: 12px 24px 22px;
+  background: var(--card);
+}
+
+.cta {
+  position: relative;
+  height: 52px;
+  border-radius: 5px;
+  background: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  padding: 0 50px 0 18px;
+}
+
+.cta::after {
+  content: "→";
+  position: absolute;
+  right: 18px;
+  font: 400 21px/1 "Bahnschrift", sans-serif;
+}
+
+.cta:hover:not(:disabled) {
+  background: #303432;
+}
+
+.cta:disabled::after {
+  opacity: 0.35;
+}
+
+.dock__reset {
+  height: 52px;
+  border-radius: 5px;
+  background: var(--paper);
+}
+
+.sheet {
+  border: 1px solid #c9cdc8;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.sheet__head {
+  padding-top: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sheet__grab {
+  width: 44px;
+  height: 2px;
+  border-radius: 0;
+}
+
+.t-display {
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 29px;
+  font-weight: 600;
+}
+
+.t-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.t-label {
+  font-family: "Bahnschrift", "Microsoft YaHei UI", sans-serif;
+}
+
+.swatch__chip {
+  border-radius: 4px;
+}
+
+.swatch--active .swatch__chip {
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--accent);
+}
+
+.extra-btn,
+.scheme,
+.note,
+.btn {
+  border-radius: 5px;
+}
+
+.scheme {
+  border-top: 3px solid var(--ink);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.scheme__titlerow {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+.chip__dot {
+  border-radius: 2px;
+}
+
+.note {
+  border-left: 3px solid currentColor;
+}
+
+.btn--primary {
+  background: var(--ink);
+}
+
+.btn--primary:hover {
+  background: #303432;
+}
+
+.btn--quiet {
+  background: #eef0ed;
+}
+
+@media (max-height: 720px) {
+  .topbar {
+    min-height: 70px;
+    padding-top: 14px;
+  }
+
+  .settings-button {
+    top: 16px;
+  }
+
+  .brand {
+    font-size: 25px;
+  }
+
+  .stage {
+    padding-top: 10px;
+  }
+
+  .readout {
+    min-height: 82px;
+  }
+
+  .dock {
+    padding-bottom: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

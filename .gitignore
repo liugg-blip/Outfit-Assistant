@@ -1,0 +1,5 @@
+release/
+runtime/
+*.log
+.DS_Store
+Thumbs.db
