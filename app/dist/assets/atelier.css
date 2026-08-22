@@ -72,12 +72,12 @@ input:focus-visible {
 }
 
 .settings-button {
-  position: absolute;
-  top: 24px;
-  right: 76px;
+  position: static;
   display: grid;
+  flex: 0 0 34px;
   width: 34px;
   height: 34px;
+  margin: 2px 8px 0 auto;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 5px;
@@ -533,9 +533,6 @@ input:focus-visible {
     padding-top: 14px;
   }
 
-  .settings-button {
-    top: 16px;
-  }
 
   .brand {
     font-size: 25px;

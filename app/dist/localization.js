@@ -173,7 +173,7 @@
     button.title = currentLanguage() === 'zh-CN' ? '设置' : 'Settings'
     button.innerHTML = '<span aria-hidden="true">⚙</span>'
     button.addEventListener('click', openSettings)
-    topbar.appendChild(button)
+    topbar.insertBefore(button, topbar.querySelector('.seg'))
     return true
   }
 
